@@ -57,6 +57,8 @@ const LoginBancarizado = ({ navigation }) => {
                     </Text>
                     <SelectDropdown 
                         data={bancos}
+                        buttonStyle={estilos.dropdownLogin}
+                        defaultButtonText='Elegir...'
                         onSelect={(selectedItem, index) => {
                             /*setBancoID(index + 1)
                             setBanco(selectedItem)
@@ -74,15 +76,6 @@ const LoginBancarizado = ({ navigation }) => {
                             return item
                         }}
                     />
-                    {/*<Picker style={estilos.loginInput} onValueChange={(itemValue, itemIndex) => {
-                        setBancoID(itemIndex + 1),
-                            setBanco(itemValue)
-                    }
-                    }>
-                        {bancos.map((item) => <Picker.Item label={item} value={item} />)}
-
-                    </Picker>*/}
-
                 </View>
                 <View style={{ marginVertical: 10, width: '90%' }} >
                     <Text style={estilos.loginLabel} >
@@ -101,7 +94,7 @@ const LoginBancarizado = ({ navigation }) => {
                         <Text style={{ color: 'white', fontSize: 20 }}>
                             Entrar
                         </Text>
-                    </TouchableOpacity >
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>

@@ -144,7 +144,6 @@ const FormCheque = (props) => {
             if (element.numeroCta === cuenta) {
                 console.log(element.nombreCta)
                 setDatosChequeNuevo({ ...datosChequeNuevo, ctaChequeNombre: element.nombreCta })   
-                return
             }
         })
         setDatosChequeNuevo({ ...datosChequeNuevo, ctaChequeNro: cuenta })

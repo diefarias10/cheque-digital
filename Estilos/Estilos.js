@@ -304,6 +304,12 @@ const estilos = StyleSheet.create({
         width: 100,
         height: 40,
         backgroundColor: '#91b3f1'
+    },
+
+    dropdownLogin: {
+        borderRadius: 5,
+        height: 40,
+        backgroundColor: '#91b3f1' 
     }
 });
 
