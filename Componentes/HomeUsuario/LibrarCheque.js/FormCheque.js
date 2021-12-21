@@ -12,7 +12,7 @@ const FormCheque = (props) => {
 
     const monedas = ['$', 'U$S']
     const tiposDoc = ['CI', 'Pasaporte']
-    const cuentas = []
+    const cuentasDrop = []
     const { data, setData } = useContext(Contexto);
     const [datosChequeNuevo, setDatosChequeNuevo] = useState({
         nroCheque: '',
@@ -23,7 +23,7 @@ const FormCheque = (props) => {
         benefCheque: '',
         benefTipoDoc: '',
         benefNroDoc: '',
-        ctaChequeNombre: '',
+        nombreCuenta: '',
         ctaChequeNro: '',
         sucursalCheque: '',
         sucursalNro: '',
@@ -32,7 +32,7 @@ const FormCheque = (props) => {
     })
 
     data.cuentas.forEach(element => { /* SE AGREGAN LOS Nº DE CUENTA EN UN ARRAY PARA MOSTRAR EN EL DROPDOWN */
-        cuentas.push(element.numeroCta)
+        cuentasDrop.push(element.numeroCta)
     })
 
     useEffect(() => { /* RESERVO NUMERO PARA EL CHEQUE NUEVO */
@@ -64,7 +64,7 @@ const FormCheque = (props) => {
             SucursalNro: datosChequeNuevo.sucursalNro,
             CtaChequeNro: datosChequeNuevo.ctaChequeNro,
             SucursalNombre: datosChequeNuevo.sucursalCheque,
-            CtaChequeNombre: datosChequeNuevo.ctaChequeNombre,
+            CtaChequeNombre: datosChequeNuevo.nombreCuenta,
             Tipo: datosChequeNuevo.tipoCheque,
             MonedaCheque: datosChequeNuevo.monedaCheque,
             EsCruzado: datosChequeNuevo.cruzado,
@@ -141,13 +141,11 @@ const FormCheque = (props) => {
 
     const cambiarCuentaCheque = (cuenta) => {
         data.cuentas.forEach(element => {
-            if (element.numeroCta === cuenta) {
-                console.log(element.nombreCta)
-                setDatosChequeNuevo({ ...datosChequeNuevo, ctaChequeNombre: element.nombreCta })   
+            if (element.numeroCta === cuenta) {         
+                setDatosChequeNuevo({ ...datosChequeNuevo, nombreCuenta: element.nombreCta, ctaChequeNro: cuenta })   
+                return
             }
         })
-        setDatosChequeNuevo({ ...datosChequeNuevo, ctaChequeNro: cuenta })
-        console.log(datosChequeNuevo.ctaChequeNombre)
     }
 
     const cambiarSuc = (sucursal) => {
@@ -168,7 +166,7 @@ const FormCheque = (props) => {
             benefCheque: '',
             benefTipoDoc: '',
             benefNroDoc: '',
-            ctaChequeNombre: '',
+            nombreCuenta: '',
             ctaChequeNro: '',
             sucursalCheque: '',
             sucursalNro: '',
@@ -323,7 +321,7 @@ const FormCheque = (props) => {
                             Cuenta a debitar:
                         </Text>
                         <SelectDropdown
-                            data={cuentas}
+                            data={cuentasDrop}
                             defaultButtonText='Elegir...'
                             buttonStyle={{ borderRadius: 5, height: 40, backgroundColor: '#91b3f1' }}
                             onSelect={(selectedItem, index) => {
