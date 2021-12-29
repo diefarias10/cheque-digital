@@ -17,7 +17,9 @@ const FormCheque = (props) => {
     const [datosChequeNuevo, setDatosChequeNuevo] = useState({
         nroCheque: '',
         tipoCheque: 'COMUN',
+        codTipo:'',
         monedaCheque: '',
+        codMoneda: '',
         importeCheque: '',
         vencCheque: '',
         benefCheque: '',
@@ -50,13 +52,7 @@ const FormCheque = (props) => {
     }, [])
 
     const confirmoChequeHandler = () => {
-        /* TRANSFORMO MONEDA A NUMEROS */
-        if (datosChequeNuevo.monedaCheque === '$') {
-            setDatosChequeNuevo({ ...datosChequeNuevo, monedaCheque: '1' })
-        }
-        else if (datosChequeNuevo.monedaCheque === 'U$S') {
-            setDatosChequeNuevo({ ...datosChequeNuevo, monedaCheque: '2' })
-        }
+        
 
         const chequeNuevo = {
             Numero: datosChequeNuevo.nroCheque,
@@ -65,8 +61,8 @@ const FormCheque = (props) => {
             CtaChequeNro: datosChequeNuevo.ctaChequeNro,
             SucursalNombre: datosChequeNuevo.sucursalCheque,
             CtaChequeNombre: datosChequeNuevo.nombreCuenta,
-            Tipo: datosChequeNuevo.tipoCheque,
-            MonedaCheque: datosChequeNuevo.monedaCheque,
+            Tipo: datosChequeNuevo.codTipo,
+            MonedaCheque: datosChequeNuevo.codMoneda,
             EsCruzado: datosChequeNuevo.cruzado,
             EsNoALaOrden: datosChequeNuevo.noALaOrden,
             BenefTipoDoc: datosChequeNuevo.benefTipoDoc,
@@ -78,7 +74,7 @@ const FormCheque = (props) => {
             LibradorCheque: data.usuario,
         }
 
-        console.log(chequeNuevo.Numero)
+       /* console.log(chequeNuevo.Numero)
         console.log(chequeNuevo.BancoID)
         console.log(chequeNuevo.SucursalNro)
         console.log(chequeNuevo.SucursalNombre)
@@ -94,7 +90,7 @@ const FormCheque = (props) => {
         console.log(chequeNuevo.ImporteCheque)
         console.log(chequeNuevo.VencimientoCheque)
         console.log(chequeNuevo.EstadoCheque)
-        console.log(chequeNuevo.LibradorCheque)
+        console.log(chequeNuevo.LibradorCheque)*/
 
         props.agregarCheque(chequeNuevo);
         vaciarChequeNuevo();
@@ -104,10 +100,10 @@ const FormCheque = (props) => {
 
     const cambiarTipo = () => {
         if (datosChequeNuevo.tipoCheque === 'COMUN') {
-            setDatosChequeNuevo({ ...datosChequeNuevo, tipoCheque: 'DIFERIDO' })
+            setDatosChequeNuevo({ ...datosChequeNuevo, tipoCheque: 'DIFERIDO', codTipo: 2 })
         }
         else if (datosChequeNuevo.tipoCheque === 'DIFERIDO') {
-            setDatosChequeNuevo({ ...datosChequeNuevo, tipoCheque: 'COMUN' })
+            setDatosChequeNuevo({ ...datosChequeNuevo, tipoCheque: 'COMUN', codTipo: 1  })
         }
     }
 
@@ -124,7 +120,13 @@ const FormCheque = (props) => {
     }
 
     const cambiarMoneda = (moneda) => {
-        setDatosChequeNuevo({ ...datosChequeNuevo, monedaCheque: moneda })
+        /* TRANSFORMO MONEDA A NUMEROS */
+        if (moneda === '$') {
+            setDatosChequeNuevo({ ...datosChequeNuevo, monedaCheque: moneda, codMoneda: "1" })
+        }
+        else if (moneda === 'U$S') {
+            setDatosChequeNuevo({ ...datosChequeNuevo, monedaCheque: moneda, codMoneda: "2" })
+        }
     }
 
     const cambiarBenef = (nombre) => {

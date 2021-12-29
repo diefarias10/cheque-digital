@@ -68,6 +68,8 @@ const LibrarCheque = () => {
             })
             .then((response) => response.json())
             .then((responseJson) => {
+               
+             console.log(responseJson)
                 if(responseJson === "No existe reserva para ese banco/nro cheque"){
                     Alert.alert('⚠', 'No se pudo librar el cheque', [{ text: 'Ok' }]);
                 }
