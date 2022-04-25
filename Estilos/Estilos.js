@@ -289,7 +289,7 @@ const estilos = StyleSheet.create({
     },
     panelBotonesForm: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         alignItems: 'center',
         paddingVertical: 10
     },

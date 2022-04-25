@@ -369,7 +369,7 @@ const FormCheque = (props) => {
                         <View style={estilos.panelBotonesForm}>
                             <TouchableOpacity onPress={confirmoChequeHandler}>
                                 <View>
-                                    <FontAwesome name="check-circle" size={80} color="#1EA966" />
+                                    <FontAwesome name="check-circle" size={80} color="#1EA966"/>
                                 </View>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={cancelarLibrado}>
